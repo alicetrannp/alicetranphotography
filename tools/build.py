@@ -14,7 +14,7 @@ Images come from original-site/photos (the Google Sites backup, not committed)
 and are written once, as resized WebP, into img/. Identical source files share
 one output, so the paper texture used in 16 places is stored once.
 
-Run:  python tools/build.py
+Run:  python tools/build.py [page ...]
 """
 import hashlib
 import html
@@ -118,15 +118,18 @@ def render_bg(arg):
     return sizes_list[-1][0]
 
 
-def build():
+def build(only=None):
     IMG_OUT.mkdir(exist_ok=True)
     favicon = IMG_OUT / "favicon.png"
     if not favicon.exists():
         Image.open(_source("home_002")).convert("RGB").resize((96, 92), Image.LANCZOS).save(favicon)
     partials = {p.stem: p.read_text(encoding="utf-8") for p in (SRC / "partials").glob("*.html")}
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
-    built = []
+    built, canonicals = [], []
     for page in sorted((SRC / "pages").rglob("*.html")):
+        rel = page.relative_to(SRC / "pages").with_suffix("").as_posix()
+        if only and rel not in only:
+            continue
         text = page.read_text(encoding="utf-8")
         first, body = text.split("\n", 1)
         meta = json.loads(first.strip()[4:-3])
@@ -150,10 +153,21 @@ def build():
         }.items():
             doc = doc.replace("{{" + k + "}}", v)
         rel = page.relative_to(SRC / "pages").with_suffix("")
-        dest = ROOT / ("index.html" if rel.as_posix() == "index" else rel / "index.html")
+        special = {"index": "index.html", "404": "404.html"}  # GitHub Pages serves 404.html for missing URLs
+        dest = ROOT / special.get(rel.as_posix(), rel / "index.html")
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(doc, encoding="utf-8")
         built.append(dest.relative_to(ROOT).as_posix())
+        if rel.as_posix() != "404":
+            canonicals.append(canonical)
+    if not only:  # a partial build would write an incomplete sitemap
+        urls = "".join(f"  <url><loc>{u}</loc></url>\n" for u in sorted(canonicals))
+        (ROOT / "sitemap.xml").write_text(
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n",
+            encoding="utf-8")
+    if not built:
+        raise SystemExit(f"no pages matched {only}")
     leftovers = [b for b in built if "[[" in (ROOT / b).read_text(encoding="utf-8")]
     if leftovers:
         raise SystemExit(f"unexpanded tokens in {leftovers}")
@@ -161,4 +175,7 @@ def build():
 
 
 if __name__ == "__main__":
-    build()
+    import sys
+    # python tools/build.py                      -> every page
+    # python tools/build.py pricing/tea-ceremonies faq   -> just those (paths under src/pages, no .html)
+    build(sys.argv[1:] or None)
