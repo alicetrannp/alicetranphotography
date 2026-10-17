@@ -1,10 +1,22 @@
 <!-- {"title": "Contact | Alice Tran Photography", "description": "Dreaming of candid, vibrant and emotion-filled photographs? Fill out the form, schedule a quick 15 minute call, sign a contract, pay a retainer. Let's do this!", "canonical": "/contact", "og_image": "contact_003"} -->
 <style>
-.contact-dream li { padding: .2rem 0; font-style: italic; text-align: center; }
-.contact-dream li::before { content: "+ "; color: var(--gold); font-weight: 700; }
-.contact-steps { max-width: 640px; margin: 0 auto 1rem; padding-left: 1.4rem; text-align: left; }
-.contact-steps li { padding: .3rem 0; }
+.contact-intro { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 960px) { .contact-intro { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+.contact-card { background: var(--white); border: 1px solid #eadfc8; border-radius: 6px; padding: 1.8rem 1.6rem; }
+.contact-card h2 { font: 400 1.5rem/1.2 var(--display); color: var(--cocoa); margin-bottom: 1rem; text-align: left; }
+.contact-card .check-list { max-width: none; }
+.contact-card .check-list li { font-style: italic; }
+.contact-found { margin: 1.4rem 0 0; text-align: left; }
+.contact-found .script-gold { text-align: left; margin: 0 0 .2rem; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+.contact-found .caps-sub { text-align: left; margin: 0; font-size: 1rem; }
+.contact-how { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+.contact-how li { display: flex; gap: .9rem; align-items: flex-start; }
+.contact-how .num { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--mustard); color: var(--cocoa); font: 700 1rem var(--display); }
+.contact-how p { margin: 0; padding-top: .3rem; }
+.contact-card .btn-row { justify-content: flex-start; margin-top: 1.4rem; }
 .contact-form { max-width: 760px; }
+.contact-form h2 { margin-bottom: .4rem; }
+.contact-form > p.lede { text-align: center; margin-bottom: 1.5rem; }
 .contact-form iframe { display: block; width: 100%; height: 1400px; border: 0; }
 @media (min-width: 960px) { .contact-form iframe { height: 1200px; } }
 </style>
@@ -13,33 +25,48 @@
 <section class="hero hero-page">
   [[img src="contact_003" alt="Couple smiling together in a field of wildflowers" sizes="100vw" class="hero-img" eager]]
   <div class="hero-content">
-    <h1 class="hero-title">Contact me</h1>
+    <h1 class="hero-title">Let's work together</h1>
   </div>
 </section>
 
 <div class="social-bar">[[social]]</div>
 
-<section class="paper section story">
-  <h2 class="caps-title">IF YOU ARE DREAMING OF</h2>
-  <ul class="contact-dream">
-    <li>candid, vibrant &amp; emotion-filled photographs</li>
-    <li>images that capture your love and energy of the day</li>
-    <li>honest, joyful, and true to color images</li>
-    <li>fun &amp; EPIC dance floor photos</li>
-  </ul>
-  <p class="script-gold">Look no further. You have found me!</p>
-  <p class="caps-sub">I'm so EXCITED to work with YOU!</p>
-  <h3 class="fell-title">Here is how it works:</h3>
-  <ol class="contact-steps">
-    <li>Fill out the <a href="#contact-form">form</a> below and give me all the details you want me to know.</li>
-    <li>I'll schedule us <a href="https://calendly.com/alicetranphotography/15min" target="_blank" rel="noopener">a quick 15 minute call</a>.</li>
-    <li>Sign a contract + pay a retainer fee (all online &amp; simple)</li>
-    <li>That's it. Let's do this!</li>
-    <li>Also, connect with me on <a href="https://www.instagram.com/alicetranphotography" target="_blank" rel="noopener">Instagram</a> &amp; <a href="https://www.facebook.com/alicetranphotography" target="_blank" rel="noopener">Facebook</a>. LET'S BE FRIENDS! :)</li>
-  </ol>
+<section class="paper section">
+  <div class="section-head">
+    <p class="eyebrow">Contact</p>
+    <h2 class="sans-title">I'm so excited to work with you!</h2>
+    <p>Tell me about your day and I'll be in touch within 24 to 48 hours.</p>
+  </div>
+  <div class="contact-intro">
+    <div class="contact-card">
+      <h2>If you are dreaming of</h2>
+      <ul class="check-list">
+        <li>candid, vibrant &amp; emotion-filled photographs</li>
+        <li>images that capture your love and energy of the day</li>
+        <li>honest, joyful, and true to color images</li>
+        <li>fun &amp; EPIC dance floor photos</li>
+      </ul>
+      <div class="contact-found">
+        <p class="script-gold">Look no further. You have found me!</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h2>Here is how it works</h2>
+      <ol class="contact-how">
+        <li><span class="num">1</span><p>Fill out the <a href="#contact-form">form</a> below and give me all the details you want me to know.</p></li>
+        <li><span class="num">2</span><p>I'll schedule us <a href="https://calendly.com/alicetranphotography/15min" target="_blank" rel="noopener">a quick 15 minute call</a>.</p></li>
+        <li><span class="num">3</span><p>Sign a contract + pay a retainer fee (all online &amp; simple).</p></li>
+        <li><span class="num">4</span><p>That's it. Let's do this!</p></li>
+      </ol>
+      <p style="margin:1.2rem 0 0">Also, connect with me on <a href="https://www.instagram.com/alicetranphotography" target="_blank" rel="noopener">Instagram</a> &amp; <a href="https://www.facebook.com/alicetranphotography" target="_blank" rel="noopener">Facebook</a>. Let's be friends! :)</p>
+      <div class="btn-row"><a class="btn" href="#contact-form">Go to the form</a></div>
+    </div>
+  </div>
 </section>
 
 <section class="section contact-form" id="contact-form">
+  <h2 class="sans-title">Tell me about your day</h2>
+  <p class="lede">Dates, locations, ideas, questions: the more you share, the better I can help.</p>
   <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAuHfk0kl7DzZuXduRZJl450rubKy3tqARX4tzfbsI2Sv6wA/viewform?embedded=true" title="Contact Information form" loading="lazy">Loading...</iframe>
   <p class="center">If you have any other questions that are not covered in the <a href="/faq">FAQ</a>, send me an email <a href="mailto:alicetranphotography@gmail.com">alicetranphotography@gmail.com</a>. Thank you!</p>
 </section>
