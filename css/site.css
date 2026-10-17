@@ -122,7 +122,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .sub { display: none; padding: 0 0 .8rem 1rem; }
 .sub-open > .sub { display: block; }
 .sub a { display: block; padding: .55rem 0; font-family: var(--serif); letter-spacing: .02em; font-size: .95rem; }
-.btn-book { margin-top: 1.2rem; background: var(--mustard); color: var(--cocoa); border-color: var(--mustard); }
+.btn-book { margin-top: 1.2rem; background: var(--mustard); color: var(--cocoa); border-color: var(--mustard); font-weight: 700; }
 .btn-book:hover { background: var(--white); color: var(--brown); border-color: var(--white); }
 .site-nav .btn-book { color: var(--ink); }
 
@@ -184,6 +184,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .script-gold {
   font: 700 clamp(1.6rem, 4vw, 2.4rem)/1.2 var(--script); color: var(--gold); text-align: center; margin-top: .8rem;
 }
+.banner > *, .paper.section > * { margin-left: auto; margin-right: auto; }
 .lede, .story p { text-align: center; font-style: italic; color: #333; }
 .story { padding-top: 2.75rem; padding-bottom: 2.25rem; }
 .pull-quote { font: italic 700 clamp(1.05rem, 2.4vw, 1.25rem)/1.6 var(--serif); color: var(--wine); margin: 0; }

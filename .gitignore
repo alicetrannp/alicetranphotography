@@ -4,3 +4,7 @@ original-site/
 desktop.ini
 .DS_Store
 Thumbs.db
+
+# Draft pages live outside the real site
+src/pages/drafts/
+drafts/
