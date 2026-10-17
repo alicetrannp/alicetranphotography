@@ -10,6 +10,11 @@
   --dark: #2b2b2b;
   --header: #1f1f1f;
   --paper: #f3ead6;
+  --beige: #f3ead6;
+  --mustard: #c9973f;
+  --mustard-lt: #e3be78;
+  --mustard-dk: #9a6b1f;
+  --cocoa: #5a3818;
   --white: #fff;
   --radius: 4px;
   --wrap: 1180px;
@@ -353,13 +358,64 @@ ul { margin: 0; padding: 0; list-style: none; }
 .dark-band p { max-width: 760px; margin: 0 auto 1rem; font-weight: 300; }
 .dark-band .btn { margin-top: 1rem; }
 
-/* Footer */
-.site-footer { text-align: center; padding: 3rem 16px 2rem; }
-.footer-logo img { width: 200px; margin: 0 auto 1.4rem; }
-.footer-cols { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin: 1.8rem 0; font-size: .95rem; }
-.footer-cols li { padding: .2rem 0; }
-.footer-note { max-width: 680px; margin: 0 auto .6rem; font-size: .85rem; color: var(--muted); }
-.footer-copy { font-size: .8rem; color: var(--muted); }
+/* Footer: beige paper, brown type, mustard accents; every link is a tappable button */
+.eyebrow {
+  display: block; margin: 0 0 .6rem;
+  font: 400 .78rem/1.2 var(--display-sc); letter-spacing: .24em; text-transform: uppercase; color: var(--gold);
+}
+.eyebrow-light { color: var(--mustard-lt); }
+.btn-row { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; }
+.btn-gold { background: var(--mustard); border-color: var(--mustard); color: var(--cocoa); }
+.btn-gold:hover { background: var(--beige); border-color: var(--beige); color: var(--cocoa); }
+.btn-ghost { background: transparent; border-color: rgba(243,234,214,.6); color: var(--beige); }
+.btn-ghost:hover { background: var(--beige); border-color: var(--beige); color: var(--cocoa); }
+
+.site-footer { color: var(--cocoa); }
+.footer-cta {
+  text-align: center; padding: 3.5rem 16px 3rem;
+  background: linear-gradient(rgba(90,56,24,.9), rgba(90,56,24,.94)), var(--paper-img) center / cover;
+  color: var(--beige);
+}
+.footer-cta h2 { font: 400 clamp(1.8rem, 4.5vw, 2.6rem)/1.15 var(--display); color: var(--beige); margin-bottom: .6rem; text-wrap: balance; }
+.footer-cta > p:not(.eyebrow) { max-width: 520px; margin: 0 auto 1.6rem; color: rgba(243,234,214,.88); }
+
+.footer-main {
+  background-color: var(--paper);
+  background-image: var(--paper-img);
+  background-size: cover;
+}
+.footer-grid {
+  max-width: var(--wrap); margin: 0 auto; padding: 3rem 16px 2rem;
+  display: grid; gap: 2.4rem;
+}
+@media (min-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 2rem; } }
+.footer-brand { min-width: 0; }
+.footer-logo img { width: 190px; margin-bottom: 1rem; }
+.footer-brand p { font-size: .92rem; line-height: 1.7; color: var(--muted); max-width: 320px; }
+.footer-col { display: flex; flex-direction: column; gap: .55rem; min-width: 0; }
+.footer-label {
+  margin: 0 0 .4rem;
+  font: 400 .74rem/1.2 var(--display-sc); letter-spacing: .24em; text-transform: uppercase; color: var(--mustard-dk);
+}
+.footer-btn {
+  display: flex; align-items: center; gap: .7rem;
+  padding: .62rem .95rem; min-height: 44px;
+  border: 1px solid rgba(90,56,24,.22); border-radius: 999px;
+  background: rgba(255,250,240,.6);
+  color: var(--cocoa); text-decoration: none; font-size: .95rem; line-height: 1.25;
+  transition: background .2s, border-color .2s, color .2s, transform .2s;
+}
+.footer-btn:hover { background: var(--mustard); border-color: var(--mustard); color: var(--cocoa); transform: translateY(-1px); }
+.footer-btn:focus-visible { outline: 2px solid var(--mustard-dk); outline-offset: 2px; }
+.footer-btn img { width: 20px; height: 20px; flex: none; border-radius: 4px; }
+.footer-btn span { min-width: 0; overflow-wrap: anywhere; }
+.footer-btn small { display: block; font-size: .78rem; opacity: .7; }
+.footer-bottom {
+  border-top: 1px solid rgba(90,56,24,.15);
+  padding: 1.4rem 16px 2rem; text-align: center; font-size: .82rem; color: var(--muted);
+}
+.footer-bottom p { max-width: 760px; margin: 0 auto .4rem; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
